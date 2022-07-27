@@ -53,4 +53,4 @@ pip install <package-name>
 
 |Name|Roll No.|Email|
 |-|-|-|
-|Pawan Kumar|2001EE42|pawan_2001ee42@iitp.ac.in|
+|Sanju Kumar|2001EE62|sanju_2001ee62@iitp.ac.in|
