@@ -1,7 +1,7 @@
 # Bit-Lords
 
 #### Project Description:  
-This project is a Employee Management system created for Hack-it-out Hackathon 
+This project is a Employee Management system.
 
 #### Features:
 - track attendance
