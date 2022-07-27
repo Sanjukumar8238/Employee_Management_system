@@ -1,0 +1,111 @@
+{% include 'navbar.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dashboard</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="my-2">Employee Dashboard</h1>
+    <div class="alert alert-info my-2" role="alert" style="width:auto;">
+      <p><b>Task Today</b> {{date}}</p>
+      <p>{{task}}</p>
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-6 col-md-12">
+        <div class="card border border-dark my-4">
+          <img src="{{user.employee.img.url}}" class="img-fluid mx-auto my-4" style="border-radius: 50%; width: 50%;">
+          <div class="card-body">
+            <h5 class="card-title">{{request.user.first_name}} {{request.user.last_name}}</h5>
+            <p class="card-text">{{user.employee.post}}</p>
+            <p class="card-text">Joining : {{user.date_joined}}</p>
+            <p class="card-text">{{user.email}}</p>
+            <a href="{% url 'update' request.user.id %}" class="btn btn-primary">update info</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-lg-6 col-md-12">
+
+        <div class="card border border-dark my-4">
+          <div class="card-header bg-dark">
+            <b style="color: white;">Attendance</b>
+          </div>
+          <div class="card-body">
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            {% if status == 1 %}
+            <div class="alert alert-success" role="alert">
+              Your attendance is marked
+            </div>
+            {% else %}
+            <a href="{% url 'attandance' request.user.id %}" class="btn btn-primary">Mark Attendance</a>
+            {% endif %}
+            {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              {{message}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="card border border-dark my-4">
+          <div class="card-header bg-dark">
+            <h5 style="color:white">Notice Board</h5>
+          </div>
+          <div class="card-body">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+              {% for notice in notices %}
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading{{notice.id}}">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapse{{notice.id}}" aria-expanded="false"
+                    aria-controls="flush-collapse{{notice.id}}">
+                    <b>{{notice.id}}. {{notice.title}}</b>({{notice.date}})
+                  </button>
+                </h2>
+                <div id="flush-collapse{{notice.id}}" class="accordion-collapse collapse"
+                  aria-labelledby="flush-heading{{notice.id}}" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">{{notice.content}}</div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="card border border-dark my-4">
+          <div class="card-header bg-dark">
+            <p style="color: white;"><b>{{preMonth}}/{{year}}</b></p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <b>Salary : </b>{{preMonthSalary}} ₹
+            </li>
+            <li class="list-group-item">
+              <b>Bonus : </b>{{preMonthBonus}} ₹
+            </li>
+          </ul>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+
+
+  {% include 'footer.html' %}
+
+</body>
+
+</html>

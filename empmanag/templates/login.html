@@ -1,0 +1,48 @@
+{% include 'navbar.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <style>
+        body{
+            background-image: url("{% static 'bg2.jpg' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+        <h1 style="color: white;">login</h1>
+        {% for message in messages %}
+        <div class="alert alert-secondary" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+
+        <div class="card my-4 mx-auto border-secondary" style="width: 40%;">
+            <div class="card-header" style="background-color: #6610f2;">
+              <h5 style="color: white;">Login</h5>
+            </div>
+            <div class="card-body">
+                <form method='post' action='#'>
+                    {% csrf_token %}
+                    <input class="form-control mb-2" type='text' name='username' placeholder="username">
+                    <input class="form-control mb-2" type='password' name='password' placeholder="password">
+                    <button class="btn btn-primary btn-sm btn-block" type="submit">login</button>
+                </form>
+            </div>
+          </div>
+    </div>
+    {% include 'footer.html' %}
+</body>
+
+</html>

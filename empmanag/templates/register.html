@@ -1,0 +1,54 @@
+{% include 'navbar.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <style>
+        body{
+            background-image: url("{% static 'bg2.jpg' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+        <h1 style="color: white;">register</h1>
+        {% for message in messages %}
+        <div class="alert alert-secondary" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+
+        <div class="card border-secondary mx-auto my-4" style="width:50%;">
+            <div class="card-header" style="background-color: #6610f2;">
+                <h5 style="color: white;">Register</h5>
+            </div>
+            <div class="card-body">
+
+                <form method='post' action="{% url 'register' %}">
+                    {% csrf_token %}
+                    <input type='text' class='form-control mb-2' name='username' placeholder="username" required>
+                    <input type='text' class='form-control mb-2' name='fname' placeholder="first-name" required>
+                    <input type='text' class='form-control mb-2' name='lname' placeholder="last-name" required>
+                    <input type='email' class='form-control mb-2' name='email' placeholder="email" required>
+                    <input type='password' class='form-control mb-2' name='password1' placeholder="password" required>
+                    <input type='password' class='form-control mb-2' name='password2' placeholder="re enter password" required>
+                    <button type="submit" class="btn btn-primary btn-sm">register</button>
+                </form>
+            </div>
+          </div>
+    </div>
+    {% include 'footer.html' %}
+</body>
+
+</html>
