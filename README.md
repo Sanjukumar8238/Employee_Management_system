@@ -10,9 +10,6 @@ This project is a Employee Management system created for Hack-it-out Hackathon
 - online publish notice
 
 
-#### ppt and demo video:
-https://drive.google.com/drive/folders/1fbz3f2jY5RKYqOHhGqPmnoBHFgMVS-FC?usp=sharing
-
 #### Tech Stacks
 - Django
 - Bootstrap 5.0
